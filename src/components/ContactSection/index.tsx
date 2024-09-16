@@ -98,7 +98,7 @@ const Contact = () => {
               className="space-y-4 bg-white p-4 rounded-lg shadow-lg flex-1"
             >
               <h4 className="text-xl font-bold mb-10">Liên hệ với chúng tôi</h4>
-              <div className={cn(["grid sm:grid-cols-2 gap-4 flex-1"])}>
+              <div className={cn(["grid sm:grid-cols-2 gap-4 flex-1", !cacheData?.contact && "sm:!grid-cols-1"])}>
                 <FormField
                   control={form.control}
                   name="name"
