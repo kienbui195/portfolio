@@ -39,7 +39,7 @@ const About = () => {
             />
           </div>
 
-          <div className="mx-auto max-w-[700px] md:text-xl text-white bg-black opacity-50 rounded-lg p-2">
+          <div className="mx-auto max-w-[700px] md:text-xl text-white bg-black opacity-70 rounded-lg p-2">
             {cacheData?.intro ?? ""}
           </div>
         </div>
