@@ -50,7 +50,7 @@ const Header = () => {
             },
           ].map((item, idx) => (
             <Button
-              className="text-sm font-medium hover:underline underline-offset-4 px-0"
+              className="text-sm font-medium hover:underline hover:bg-transparent underline-offset-4 px-0"
               key={idx}
               onClick={() => handleScroll(item.id)}
               variant="ghost"

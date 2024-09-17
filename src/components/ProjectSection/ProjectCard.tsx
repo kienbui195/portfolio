@@ -35,10 +35,14 @@ const ProjectCard = ({
   gallery,
 }: IProjectCardProps) => {
   return (
-    <Card className="border-none hover:border hover:border-gray-400 bg-white hover:bg-slate-100 hover:shadow-lg hover:scale-105 transition duration-500">
+    <Card className="border-none hover:border hover:border-gray-400 group/projectCard bg-white hover:rotate-10 hover:bg-slate-100 hover:shadow-lg hover:scale-105 transition duration-500">
       <CardHeader>
-        <CardTitle>{title}</CardTitle>
-        <CardDescription className="text-gray-400">{subTitle}</CardDescription>
+        <CardTitle className="line-clamp-2 group-hover/projectCard:line-clamp-none">
+          {title}
+        </CardTitle>
+        <CardDescription className="text-gray-400 line-clamp-2 group-hover/projectCard:line-clamp-none">
+          {subTitle}
+        </CardDescription>
       </CardHeader>
       <CardContent>
         <Carousel className="w-full">
@@ -65,21 +69,23 @@ const ProjectCard = ({
           <CarouselPrevious className="left-0" />
           <CarouselNext className="right-0" />
         </Carousel>
-        <p className="text-sm">{desc}</p>
+        <p className="text-sm line-clamp-4 group-hover/projectCard:line-clamp-none">
+          {desc}
+        </p>
         <div className="flex mt-4">
           <Link
             to={demoLink}
             className={cn([demoLink ? "flex" : "hidden"])}
             target="_blank"
           >
-            <Button className="mr-2 bg-black hover:opacity-50 text-white">
+            <Button className="mr-2 bg-black font-bold hover:opacity-80 text-white">
               Demo
             </Button>
           </Link>
           <Link
             target="_blank"
             to={codeLink}
-            className={cn([codeLink ? "flex" : "hidden"])}
+            className={cn(["font-bold", codeLink ? "flex" : "hidden"])}
           >
             <Button variant="outline" className="mr-2 bg-white">
               Code

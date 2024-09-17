@@ -1,5 +1,5 @@
 import * as React from "react";
-import { cn, getImageUrl } from "../../lib/utils";
+import { cn } from "../../lib/utils";
 import { useSelector } from "react-redux";
 import { RootState } from "../../lib/store";
 import { z } from "zod";
@@ -87,7 +87,7 @@ const Contact = () => {
         </h2>
         <div
           className={cn([
-            "grid md:grid-cols-2 grid-cols-1 gap-4 py-6",
+            "grid md:grid-cols-3 grid-cols-1 gap-4 py-6",
             !cacheData ||
               (cacheData && !cacheData.contact && "md:!grid-cols-1"),
           ])}
@@ -95,10 +95,15 @@ const Contact = () => {
           <Form {...form}>
             <form
               onSubmit={form.handleSubmit(onSubmit)}
-              className="space-y-4 bg-white p-4 rounded-lg shadow-lg flex-1"
+              className="space-y-4 bg-white p-8 rounded-lg shadow-lg flex-1 md:col-span-2 col-span-1"
             >
-              <h4 className="text-xl font-bold mb-10">Liên hệ với chúng tôi</h4>
-              <div className={cn(["grid sm:grid-cols-2 gap-4 flex-1", !cacheData?.contact && "sm:!grid-cols-1"])}>
+              <h4 className="text-xl font-bold mb-6">Liên hệ với chúng tôi</h4>
+              <div
+                className={cn([
+                  "grid sm:grid-cols-2 grid-cols-1 gap-4 flex-1",
+                  !cacheData?.contact && "sm:!grid-cols-1",
+                ])}
+              >
                 <FormField
                   control={form.control}
                   name="name"
@@ -165,18 +170,21 @@ const Contact = () => {
               <div className="w-full flex justify-center">
                 <Button
                   type="submit"
-                  className="bg-green-500 text-white font-bold hover:opacity-70"
+                  className={cn([
+                    "bg-green-500 text-white font-bold hover:opacity-70",
+                    loading && "animate-spin cursor-progress",
+                  ])}
                   disabled={loading}
                 >
-                  Submit
+                  {loading ? "Loading" : "Submit"}
                 </Button>
               </div>
             </form>
           </Form>
-          {cacheData && cacheData.contact && cacheData.contact.profile && (
+          {cacheData && cacheData.contact && (
             <div
-              className="bg-white p-4 rounded-lg shadow-lg flex-1"
-              dangerouslySetInnerHTML={{ __html: cacheData.contact.profile }}
+              className="bg-white p-8 rounded-lg shadow-lg flex-1"
+              dangerouslySetInnerHTML={{ __html: cacheData.contact }}
             ></div>
           )}
         </div>
